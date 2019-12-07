@@ -1,0 +1,33 @@
+#define MAX_CHARS 5
+#define MAX_STR 50
+#define MAX_PILOTS 20
+#define MIN_PILOTS 2
+#define MAX_VOLTES 10
+#define MIN_VOLTES 1
+#define MAX_PARADAS 11
+
+typedef char String50 [MAX_STR];
+
+
+typedef struct{
+	char lletra;
+	int dig1;
+	int dig2;
+	int numCarrera;
+	int dorsalPilot;
+} codiRadio;
+
+typedef struct{
+	int dia;
+	int mes;
+	int any;
+} data;
+
+typedef struct{
+	int dorsal;
+	String50 nom;
+	data dataNaixement;
+	char pneumatic[2];
+	int numParades;
+	int voltaParades[MAX_PARADAS];
+} pilot;
