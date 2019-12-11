@@ -16,7 +16,7 @@ typedef struct{
 	int numCarrera;
 	int dorsalPilot;
 } codiRadio;
-
+//lletra, dig1, dig2
 typedef struct{
 	int dia;
 	int mes;

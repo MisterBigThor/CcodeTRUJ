@@ -6,7 +6,12 @@
 #include "defines"
 
 
-
+int charToInt(char c){
+    if(c >= '0' &&  c <= '9'){
+        return c - '0';
+    }
+    else return -1;
+}
 int valorAbsolut(int n){
 	if(n <= 0) return n * -1;
 	else return n;
@@ -141,11 +146,18 @@ codiRadio genCodiRadio(){
 //OPCION 3:
 //0 si son diferentes, 1 si son iguals.
 int comparaCodiRadio(codiRadio c1, String50 c2){
-	//int ret;
-	//sprintf(,"%c%d%d", c1.lletra, c1.dig1, c1.dig2);
-
-	//printf("DEBUG: %s\n", aux);
-	return ;
+    if(strlen(c2) == 4){
+        if(c2[0] != c1.lletra) return 0;
+        if(charToInt(c2[1]) != (int)((c1.dig1)/10)) return 0;
+        if(charToInt(c2[2]) != (c1.dig1)%10) return 0;
+        if(charToInt(c2[3]) != c1.dig2) return 0;
+    }
+	else if(strlen(c2) == 3){
+        if(c2[0] != c1.lletra) return 0;
+        if(charToInt(c2[1]) != (c1.dig1)%10) return 0;
+        if(charToInt(c2[2]) != (c1.dig2)) return 0;
+    }
+	return 1;
 }
 
 //MAIN:
@@ -175,20 +187,20 @@ int main(){
 				if(o1 != 1 && o2 != 1) printf("ERROR: Encara no s'ha generat cap codi de xifrat per a la radio");
 				else {
 					printf("Introduiu el codi de radio: ");
-					scanf("%s\n", codiRadioEnt);
+					scanf("%s", codiRadioEnt);
 
-					if(comparaCodiRadio(codiRadioGen, codiRadioEnt) == 0) printf("ERROR: Aquest codi de radio no existeix.\n");
-					else if("exit" != "exit"){
+					if(comparaCodiRadio(codiRadioGen, codiRadioEnt) == 0) 
+						printf("ERROR: Aquest codi de radio no existeix.\n");
+					else {
 						printf("Codi correcte.\n");
 						printf("comunicant amb el pilot # %d en la carrera # %d ...\n", codiRadioGen.dorsalPilot, codiRadioGen.numCarrera);
-						//
 					}
-
 				}
 				break;
 			case 4:
 				break;
 			case 5:
+				//sortir
 				break;
 			default:
 				printf("ERROR: Els valors admesos es troben entre l’1 i el 5.\n");
