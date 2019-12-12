@@ -3,23 +3,30 @@
     padding: 10px;
     margin: 10px;
 }
-
 #sig{
     background-color: blue;
     float: right;
+    height: 25%;
+    width: 25%;
 }
 #ant{
     background-color: green;
-    float: center;
+    float: left;
+    height: 25%;
+    width: 25%;
 }
 #act{
     background-color: firebrick;
+    height: 50%;
+    width: 50%;
 }
 #container{
     border: 10px solid black;
-    height: 100%;
-    width: 100%;
     background-color: black;
+    height: 500px;
+
+    padding: 10px;
+    margin: 10px;
 }
 #entradas{
     border-style: solid;
