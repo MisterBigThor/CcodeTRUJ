@@ -2,35 +2,21 @@
     border: 15px solid yellow;
     padding: 10px;
     margin: 10px;
-    position: absolute;
-}
-#sig, #ant{
-    width: 100px;
-    height: 100px;
 }
 
 #sig{
     background-color: blue;
-    float: left;
-    
+    float: right;
 }
 #ant{
     background-color: green;
-    float: right;
+    float: center;
 }
 #act{
-    width: 30%;
-    height: 30%;
     background-color: firebrick;
-    text-align: center;
-    left: 50%;
-    right: 50%;
-    top: 50%;
-    bottom : 50%;
 }
 #container{
     border: 10px solid black;
-    
 }
 #entradas{
     border-style: solid;
