@@ -6,28 +6,38 @@
 #sig{
     background-color: blue;
     float: right;
-    height: 25%;
     width: 25%;
 }
 #ant{
     background-color: green;
     float: left;
-    height: 25%;
     width: 25%;
 }
 #act{
     background-color: firebrick;
-    height: 50%;
     width: 50%;
 }
 #container{
-    border: 10px solid black;
+    border: 10px solid grey;
     background-color: black;
     height: 500px;
 
     padding: 10px;
     margin: 10px;
 }
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+  }
+  .active, .dot:hover {
+    background-color: #717171;
+  }
 #entradas{
     border-style: solid;
     background-color: blue;

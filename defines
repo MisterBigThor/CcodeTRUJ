@@ -1,12 +1,21 @@
 #define MAX_CHARS 5
-#define MAX_STR 50
+#define MAX_STR 500
 #define MAX_PILOTS 20
 #define MIN_PILOTS 2
 #define MAX_VOLTES 10
 #define MIN_VOLTES 1
 #define MAX_PARADAS 11
 
-typedef char String50 [MAX_STR];
+typedef char String50 [50];
+typedef char String25 [25];
+typedef char String500 [500];
+
+//W, I, C1, C2, C3
+typedef struct{
+	char lletra;
+	int num;
+} pneumatics;
+
 
 
 typedef struct{
@@ -18,16 +27,40 @@ typedef struct{
 } codiRadio;
 //lletra, dig1, dig2
 typedef struct{
-	int dia;
-	int mes;
-	int any;
+	int dia[2];
+	int mes[2];
+	char any[4];
 } data;
 
 typedef struct{
 	int dorsal;
 	String50 nom;
 	data dataNaixement;
-	char pneumatic[2];
+	pneumatics p;
 	int numParades;
 	int voltaParades[MAX_PARADAS];
 } pilot;
+
+typedef struct {
+	int numero;
+	int degradacio;
+	char plou;
+	int voltes;
+	int numPilots;
+} carrera;
+
+
+int charToInt(char c){
+    if(c >= '0' &&  c <= '9'){
+        return c - '0';
+    }
+    else return -1;
+}
+//c1 decena, c2 unidades
+int charToInt2(char c1, char c2){
+	
+	int decena = charToInt(c1);
+	int unidad = charToInt(c2);
+	if(decena < 0 || unidad < 0) return -2;
+	return (decena*10) + unidad;
+}

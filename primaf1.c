@@ -5,7 +5,7 @@
 //types y defines:
 #include "defines"
 
-
+//UTILITYS
 int charToInt(char c){
     if(c >= '0' &&  c <= '9'){
         return c - '0';
@@ -38,73 +38,43 @@ void printOpcions() {
 //OPCIO 1:
 void stratPneumatics(){
 	char plou, pneumatics;
-	int nd, v;
+	int nd, v, paradas;
 	do{
 		printf("Esta plovent sobre la pista? (S / N): ");
 		scanf("\n%c", &plou);
 	}while(!(plou == 's' || plou == 'S' || plou == 'n' || plou == 'N'));
 
-	//if redundante:
-	if(plou == 's' || plou == 'S' || plou == 'n' || plou == 'N'){
+	
+	printf("Quin nivell de degradacio provoca la pista sobre el pneumatic? (0−4): ");
+	scanf("%d", &nd);
+
+	while(nd<0 || nd>4){
+		printf("ERROR: Si us plau, introduiu un valor entre 0 i 4\n");
 		printf("Quin nivell de degradacio provoca la pista sobre el pneumatic? (0−4): ");
 		scanf("%d", &nd);
-
-	   	while(nd<0 || nd>4){
-			printf("ERROR: Si us plau, introduiu un valor entre 0 i 4\n");
-			printf("Quin nivell de degradacio provoca la pista sobre el pneumatic? (0−4): ");
-			scanf("%d", &nd);
-		}
-
-		do{
-			printf("Com es vol prioritzar la velocitat del pneumatic sobre la durabilitat? (1−5): ");
-			scanf("%d", &v);
-		}while(v<1 || v>5);
-
 	}
-	
+
+	do{
+		printf("Com es vol prioritzar la velocitat del pneumatic sobre la durabilitat? (1−5): ");
+		scanf("%d", &v);
+	}while(v<1 || v>5);
+
 	pneumatics = valorAbsolut(v-nd);
+	if(v < 3) paradas = 1;
+	if(v == 3) paradas = 2;
+	else paradas = 3;
 	if(plou == 'n' || plou == 'N'){
-		if(v < 3){
-			printf("El compost adecuat es el C%d i haureu de realitzar 1 parada a boxes", pneumatics);
-		} else {
-			if(v = 3){
-				printf("El compost adecuat es el C%d i haureu de realitzar 2 parades a boxes", pneumatics);
-			} else {
-				if(v > 3){
-					printf("El compost adecuat es el C%d i haureu de realitzar 3 parades a boxes", pneumatics);
-				}
-			}
-		}
+		printf("El compost adecuat es el C%d i haureu de realitzar %d parada a boxes", pneumatics, paradas);	
 	}
 
 	if(plou == 's' || plou == 'S'){
 		if(pneumatics < 3){
-			if(v < 3){
-				printf("El compost adecuat es el W i haureu de realitzar 1 parada a boxes");
-			} else {
-				if(v = 3){
-					printf("El compost adecuat es el W i haureu de realitzar 2 parades a boxes");
-			   } else {
-					if(v > 3){
-						printf("El compost adecuat es el W i haureu de realitzar 3 parades a boxes");
-					}
-				}
-			}
+			printf("El compost adecuat es el W i haureu de realitzar %d parada a boxes", paradas);	
 		}
 
 		if(pneumatics >= 3){
-			if(v < 3){
-				printf("El compost adecuat es el I i haureu de realitzar 1 parada a boxes");
-			} else {
-				if(v = 3){
-					printf("El compost adecuat es el I i haureu de realitzar 2 parades a boxes");
-				} else {
-					if(v > 3){
-						printf("El compost adecuat es el I i haureu de realitzar 3 parades a boxes");
-						printf("El compost adecuat es el I i haureu de realitzar 3 parades a boxes");
-					}
-				}
-			}
+			printf("El compost adecuat es el I i haureu de realitzar %d parada a boxes", paradas);
+			
 		}
 	}
 }
@@ -194,6 +164,7 @@ int main(){
 					else {
 						printf("Codi correcte.\n");
 						printf("comunicant amb el pilot # %d en la carrera # %d ...\n", codiRadioGen.dorsalPilot, codiRadioGen.numCarrera);
+						
 					}
 				}
 				break;
